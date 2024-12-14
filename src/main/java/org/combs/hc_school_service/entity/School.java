@@ -30,7 +30,7 @@ public class School {
     @Column(name = "students_quantity")
     private Integer studentsQuantity;
 
-    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Class> aClasses;
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL   )
+    private List<Class> classes;
 }
 

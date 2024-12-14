@@ -31,6 +31,6 @@ public class School {
     private Integer studentsQuantity;
 
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Class> classes;
+    private List<Class> aClasses;
 }
 

@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS ms_school_sc.students (
 );
 
 -- Таблица для классов
-CREATE TABLE IF NOT EXISTS ms_school_sc.lasses (
+CREATE TABLE IF NOT EXISTS ms_school_sc.classes (
                          id SERIAL PRIMARY KEY,
                          class_number INT NOT NULL,
                          class_letter CHAR(1) NOT NULL,
@@ -38,5 +38,5 @@ CREATE TABLE IF NOT EXISTS ms_school_sc.schools (
                          street VARCHAR(255),
                          house_number INT,
                          teachers_quantity INT,
-                         students_quantity INT,
+                         students_quantity INT
 );

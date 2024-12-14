@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.4.0'
+    id 'org.springframework.boot' version '2.7.18'
     id 'io.spring.dependency-management' version '1.1.6'
 }
 
@@ -26,6 +26,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.flywaydb:flyway-core'
+    //swagger
+    implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.25'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'

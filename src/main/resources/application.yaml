@@ -1,6 +1,6 @@
 spring:
   application:
-    name: HC_School_Service
+    name: school-service
   datasource:
     username: user
     password: user

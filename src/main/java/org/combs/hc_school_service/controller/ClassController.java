@@ -5,14 +5,17 @@ import lombok.RequiredArgsConstructor;
 import org.combs.hc_school_service.dto.CreateClassDTO;
 import org.combs.hc_school_service.entity.Class;
 import org.combs.hc_school_service.service.ClassService;
+import org.combs.hc_school_service.service.SchoolService;
 import org.springframework.beans.factory.parsing.Problem;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -22,6 +25,7 @@ import java.util.Map;
 public class ClassController {
 
     private final ClassService classService;
+    private final SchoolService schoolService;
     private final MessageSource messageSource;
 
     @GetMapping("/{id}")
@@ -30,9 +34,17 @@ public class ClassController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+    //todo to end
+    @GetMapping("/school/{schoolId}")
+    public ResponseEntity<List<Class>> getClassesBySchoolId(@PathVariable Long schoolId){
+        return schoolService.findById(schoolId)
+                .map(classService::findALlBySchool)
+                .map(ResponseEntity::ok)
+                .orElseGet(()->ResponseEntity.notFound().build());
+    }
 
     @PostMapping
-    public ResponseEntity<?> createClass(@RequestBody CreateClassDTO classDTO,
+    public ResponseEntity<?> createClass(@Validated @RequestBody CreateClassDTO classDTO,
                                          BindingResult bindingResult,
                                          UriComponentsBuilder uriComponentsBuilder) {
         if (bindingResult.hasErrors()) {
@@ -52,8 +64,3 @@ public class ClassController {
     }
 }
 
-/**
- * получение класса
- * получение класса по школе
- * создание класс
- */
